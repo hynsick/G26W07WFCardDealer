@@ -30,16 +30,24 @@
         {
             Card1 = new PictureBox();
             btnDeal = new Button();
+            Card2 = new PictureBox();
+            Card3 = new PictureBox();
+            Card4 = new PictureBox();
+            Card5 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)Card1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Card2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Card3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Card4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Card5).BeginInit();
             SuspendLayout();
             // 
             // Card1
             // 
             Card1.Image = Properties.Resources.red_joker;
-            Card1.Location = new Point(-75, 2);
+            Card1.Location = new Point(-17, 2);
             Card1.Margin = new Padding(4);
             Card1.Name = "Card1";
-            Card1.Size = new Size(545, 493);
+            Card1.Size = new Size(406, 493);
             Card1.SizeMode = PictureBoxSizeMode.Zoom;
             Card1.TabIndex = 0;
             Card1.TabStop = false;
@@ -48,23 +56,78 @@
             // 
             btnDeal.Location = new Point(12, 502);
             btnDeal.Name = "btnDeal";
-            btnDeal.Size = new Size(368, 74);
+            btnDeal.Size = new Size(1805, 74);
             btnDeal.TabIndex = 1;
             btnDeal.Text = "카드분배";
             btnDeal.UseVisualStyleBackColor = true;
             btnDeal.Click += OnDeal;
             // 
+            // Card2
+            // 
+            Card2.Image = Properties.Resources.red_joker;
+            Card2.Location = new Point(353, 2);
+            Card2.Margin = new Padding(4);
+            Card2.Name = "Card2";
+            Card2.Size = new Size(406, 493);
+            Card2.SizeMode = PictureBoxSizeMode.Zoom;
+            Card2.TabIndex = 2;
+            Card2.TabStop = false;
+            Card2.Click += pictureBox1_Click;
+            // 
+            // Card3
+            // 
+            Card3.Image = Properties.Resources.red_joker;
+            Card3.Location = new Point(708, 2);
+            Card3.Margin = new Padding(4);
+            Card3.Name = "Card3";
+            Card3.Size = new Size(406, 493);
+            Card3.SizeMode = PictureBoxSizeMode.Zoom;
+            Card3.TabIndex = 3;
+            Card3.TabStop = false;
+            Card3.Click += pictureBox2_Click;
+            // 
+            // Card4
+            // 
+            Card4.Image = Properties.Resources.red_joker;
+            Card4.Location = new Point(1098, -8);
+            Card4.Margin = new Padding(4);
+            Card4.Name = "Card4";
+            Card4.Size = new Size(406, 493);
+            Card4.SizeMode = PictureBoxSizeMode.Zoom;
+            Card4.TabIndex = 4;
+            Card4.TabStop = false;
+            Card4.Click += pictureBox3_Click;
+            // 
+            // Card5
+            // 
+            Card5.Image = Properties.Resources.red_joker;
+            Card5.Location = new Point(1456, 2);
+            Card5.Margin = new Padding(4);
+            Card5.Name = "Card5";
+            Card5.Size = new Size(406, 493);
+            Card5.SizeMode = PictureBoxSizeMode.Zoom;
+            Card5.TabIndex = 5;
+            Card5.TabStop = false;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(14F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(392, 576);
+            ClientSize = new Size(1829, 576);
+            Controls.Add(Card5);
+            Controls.Add(Card4);
+            Controls.Add(Card3);
+            Controls.Add(Card2);
             Controls.Add(btnDeal);
             Controls.Add(Card1);
             Margin = new Padding(4);
             Name = "Form1";
             Text = "카드딜러";
             ((System.ComponentModel.ISupportInitialize)Card1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Card2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Card3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Card4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Card5).EndInit();
             ResumeLayout(false);
         }
 
@@ -72,5 +135,9 @@
 
         private PictureBox Card1;
         private Button btnDeal;
+        private PictureBox Card2;
+        private PictureBox Card3;
+        private PictureBox Card4;
+        private PictureBox Card5;
     }
 }
