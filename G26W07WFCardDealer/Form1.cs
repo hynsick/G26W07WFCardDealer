@@ -1,11 +1,13 @@
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Windows.Forms;
+using G26W07WFCardDealer; // 분리한 로직 사용
+
 namespace G26W07WFCardDealer
 {
     public partial class Form1 : Form
     {
-        private static readonly string[] Suits = ["spades", "hearts", "diamonds", "clubs"];
-        private static readonly string[] Values = ["ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "jack", "queen", "king"];
-        private readonly Random random = new Random();
-
         public Form1()
         {
             InitializeComponent();
@@ -13,46 +15,45 @@ namespace G26W07WFCardDealer
 
         private void OnDeal(object sender, EventArgs e)
         {
-            List<string> deck = CreateDeck();
-            List<string> hand = deck.OrderBy(x => random.Next()).Take(5).ToList();
+            // 1. 덱 생성 및 5장 뽑기 (로직)
+            Deck deck = new Deck();
+            List<Card> hand = deck.Draw(5);
 
+            // 2. 화면에 카드 이미지 띄우기 (뷰)
             Card1.Image = GetCardImage(hand[0]);
             Card2.Image = GetCardImage(hand[1]);
             Card3.Image = GetCardImage(hand[2]);
             Card4.Image = GetCardImage(hand[3]);
             Card5.Image = GetCardImage(hand[4]);
+
+            // 3. 결과 라벨 업데이트 (로직 호출)
+            ResultLabel.Text = CheckCard.Evaluate(hand);
         }
 
-        private List<string> CreateDeck()
+        // 비즈니스 로직의 Card 객체를 화면 리소스 이름으로 매핑하는 View 고유 함수
+        private Image GetCardImage(Card card)
         {
-            List<string> deck = new List<string>();
-            foreach (string suit in Suits)
+            string suitName = card.Suit.ToString().ToLower();
+            string rankName = card.Rank switch
             {
-                foreach (string value in Values)
-                {
-                    string suitName = value is "jack" or "queen" or "king" ? suit + "2" : suit;
-                    deck.Add($"{value}_of_{suitName}");
-                }
-            }
-            return deck;
-        }
+                Rank.Ace => "ace",
+                Rank.Jack => "jack",
+                Rank.Queen => "queen",
+                Rank.King => "king",
+                _ => ((int)card.Rank).ToString()
+            };
 
-        private Image GetCardImage(string cardName)
-        {
-            return Properties.Resources.ResourceManager.GetObject(cardName) as Image
+            // 리소스 이미지 이름 규칙 예외 처리 (J, Q, K는 무늬 뒤에 2가 붙음)
+            if (card.Rank == Rank.Jack || card.Rank == Rank.Queen || card.Rank == Rank.King)
+            {
+                suitName += "2";
+            }
+
+            string resourceName = $"{rankName}_of_{suitName}";
+
+            return Properties.Resources.ResourceManager.GetObject(resourceName) as Image
                    ?? Properties.Resources.red_joker;
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void pictureBox3_Click(object sender, EventArgs e)
-        {
-        }
     }
 }

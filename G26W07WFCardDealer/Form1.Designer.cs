@@ -34,6 +34,7 @@
             Card3 = new PictureBox();
             Card4 = new PictureBox();
             Card5 = new PictureBox();
+            ResultLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)Card1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Card2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Card3).BeginInit();
@@ -56,7 +57,7 @@
             // 
             btnDeal.Location = new Point(12, 502);
             btnDeal.Name = "btnDeal";
-            btnDeal.Size = new Size(1805, 74);
+            btnDeal.Size = new Size(1265, 74);
             btnDeal.TabIndex = 1;
             btnDeal.Text = "카드분배";
             btnDeal.UseVisualStyleBackColor = true;
@@ -72,7 +73,6 @@
             Card2.SizeMode = PictureBoxSizeMode.Zoom;
             Card2.TabIndex = 2;
             Card2.TabStop = false;
-            Card2.Click += pictureBox1_Click;
             // 
             // Card3
             // 
@@ -84,7 +84,6 @@
             Card3.SizeMode = PictureBoxSizeMode.Zoom;
             Card3.TabIndex = 3;
             Card3.TabStop = false;
-            Card3.Click += pictureBox2_Click;
             // 
             // Card4
             // 
@@ -96,7 +95,6 @@
             Card4.SizeMode = PictureBoxSizeMode.Zoom;
             Card4.TabIndex = 4;
             Card4.TabStop = false;
-            Card4.Click += pictureBox3_Click;
             // 
             // Card5
             // 
@@ -109,11 +107,22 @@
             Card5.TabIndex = 5;
             Card5.TabStop = false;
             // 
+            // ResultLabel
+            // 
+            ResultLabel.BackColor = SystemColors.MenuHighlight;
+            ResultLabel.Font = new Font("맑은 고딕", 12F);
+            ResultLabel.Location = new Point(1299, 502);
+            ResultLabel.Name = "ResultLabel";
+            ResultLabel.Size = new Size(518, 80);
+            ResultLabel.TabIndex = 6;
+            ResultLabel.Text = "결과";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(14F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1829, 576);
+            Controls.Add(ResultLabel);
             Controls.Add(Card5);
             Controls.Add(Card4);
             Controls.Add(Card3);
@@ -139,5 +148,6 @@
         private PictureBox Card3;
         private PictureBox Card4;
         private PictureBox Card5;
+        private Label ResultLabel;
     }
 }
